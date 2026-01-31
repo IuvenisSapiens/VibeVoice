@@ -673,7 +673,7 @@ def create_demo_interface(demo_instance: VibeVoiceDemo):
     with gr.Blocks() as interface:
         
         # Header
-        gr.HTML("""
+        gr.Markdown("""
         # VibeVoice
         """)
         
@@ -1109,6 +1109,7 @@ def main():
             # server_port=args.port,
             server_name="0.0.0.0" if args.share else "127.0.0.1",
             show_error=True,
+            inbrowser=True,
         )
     except KeyboardInterrupt:
         print("\n🛑 Shutting down gracefully...")
