@@ -176,3 +176,6 @@ tags
 exp
 .gradio/
 experimental_voices
+VibeVoice-Realtime-0.5B
+VibeVoice-1.5B
+VibeVoice-ASR-4bit

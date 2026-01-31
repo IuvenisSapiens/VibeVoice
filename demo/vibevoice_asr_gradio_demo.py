@@ -11,7 +11,6 @@ import soundfile as sf
 from pathlib import Path
 import argparse
 import time
-import json
 import gradio as gr
 from typing import List, Dict, Tuple, Optional, Generator
 import tempfile
@@ -641,16 +640,16 @@ def transcribe_audio(
         total_input = input_tokens.get('total', 0)
         
         # Format final raw output with input/output token stats
-        raw_output = f"--- ✅ Raw Output ---\n"
+        raw_output = "--- ✅ Raw Output ---\n"
         raw_output += f"📥 Input: {total_input} tokens (🎤 speech: {speech_tokens}, 📝 text: {text_tokens}, ⬜ pad: {padding_tokens})\n"
         raw_output += f"📤 Output: {token_count} tokens | ⏱️ Time: {generation_time:.2f}s\n"
-        raw_output += f"---\n"
+        raw_output += "---\n"
         # Format raw text for better readability: add newline after each dict (},)
         formatted_raw_text = result['raw_text'].replace('},', '},\n')
         raw_output += formatted_raw_text
         
         # Debug: print raw output to console
-        print(f"[DEBUG] Raw model output:")
+        print("[DEBUG] Raw model output:")
         print(f"[DEBUG] {result['raw_text']}")
         print(f"[DEBUG] Found {len(result['segments'])} segments")
         
@@ -789,7 +788,7 @@ def transcribe_audio(
             """
             
             audio_segments_html = theme_css
-            audio_segments_html += f"<div class='audio-segments-container'>"
+            audio_segments_html += "<div class='audio-segments-container'>"
             
             # Add format info
             format_info = "MP3 32kbps 16kHz mono" if HAS_PYDUB else "WAV 16kHz"
@@ -1113,7 +1112,7 @@ def main():
     parser.add_argument(
         "--model_path", 
         type=str, 
-        default="microsoft/VibeVoice-ASR",
+        default="./VibeVoice-ASR-4bit",
         help="Path to the model (HuggingFace format directory or model name)"
     )
     parser.add_argument(
@@ -1155,7 +1154,7 @@ def main():
         attn_implementation=args.attn_implementation
     )
     
-    print(f"🚀 Starting VibeVoice ASR Demo...")
+    print("🚀 Starting VibeVoice ASR Demo...")
     print(f"📍 Server will be available at: http://{args.host}:{args.port}")
     
     # Gradio 6.0+ moved theme/css to launch()
@@ -1166,6 +1165,7 @@ def main():
         "show_error": True,
         "theme": gr.themes.Soft(),
         "css": custom_css,
+        "inbrowser": True
     }
     
     # Enable queue for concurrent request handling
