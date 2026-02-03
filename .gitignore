@@ -177,5 +177,5 @@ exp
 .gradio/
 experimental_voices
 VibeVoice-Realtime-0.5B
-VibeVoice-1.5B
+VibeVoice-7B-4bit
 VibeVoice-ASR-4bit

@@ -57,7 +57,7 @@
     "sliding_window": null,
     "tie_word_embeddings": false,
     "torch_dtype": "bfloat16",
-    "transformers_version": "4.40.1",
+    "transformers_version": "4.57.6",
     "use_cache": true,
     "use_mrope": false,
     "use_sliding_window": false,

@@ -1045,7 +1045,7 @@ def parse_args():
     parser.add_argument(
         "--model_path",
         type=str,
-        default="./VibeVoice-1.5B",
+        default="./VibeVoice-7B-4bit",
         help="Path to the VibeVoice model directory",
     )
     parser.add_argument(
